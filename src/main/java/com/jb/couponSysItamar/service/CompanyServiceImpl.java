@@ -117,8 +117,4 @@ public class CompanyServiceImpl extends ClientService implements CompanyService 
         return couponRepository.findByCompanyIdAndPriceLessThan(companyId, maxPrice);
     }
 
-    @Override
-    public Company getLoginCompany(int companyId) throws CouponSystemException {
-        return companyRepository.findById(companyId).orElseThrow(() -> new CouponSystemException(ErrMsg.ID_NOT_FOUND));
-    }
 }

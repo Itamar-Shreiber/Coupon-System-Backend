@@ -96,12 +96,5 @@ public class CustomerServiceImpl extends ClientService implements CustomerServic
         return customerCouponsByPrice;
     }
 
-    @Override
-    public Customer getLoginCustomer(int customerId) throws CouponSystemException {
-        Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new CouponSystemException(ErrMsg.ID_NOT_FOUND));
-        return customer;
-    }
-
-
 }
 

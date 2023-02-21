@@ -30,7 +30,6 @@ public interface CompanyService {
 
     List<Coupon> getAllCompanyCouponsByMaxPrice(int companyId, double maxPrice) throws CouponSystemException;
 
-    Company getLoginCompany(int companyId) throws CouponSystemException;
 
     LoginResDto loginDto(LoginReqDto req) throws CouponSystemException;
 

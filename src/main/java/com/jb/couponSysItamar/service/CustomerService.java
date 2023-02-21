@@ -22,9 +22,6 @@ public interface CustomerService {
 
     List<Coupon> getAllCustomerPurchasedCouponsByMaxPrice(int customerId, double maxPrice) throws CouponSystemException;
 
-    Customer getLoginCustomer(int customerId) throws CouponSystemException;
-
-
     LoginResDto loginDto(LoginReqDto req) throws CouponSystemException;
 
 
