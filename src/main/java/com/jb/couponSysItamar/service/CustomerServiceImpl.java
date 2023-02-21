@@ -5,7 +5,6 @@ import com.jb.couponSysItamar.dto.LoginReqDto;
 import com.jb.couponSysItamar.dto.LoginResDto;
 import com.jb.couponSysItamar.exceptions.CouponSystemException;
 import com.jb.couponSysItamar.exceptions.ErrMsg;
-import com.jb.couponSysItamar.login.ClientType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -21,14 +20,7 @@ import java.util.UUID;
 public class CustomerServiceImpl extends ClientService implements CustomerService {
     @Autowired
     private TokenService tokenService;
-//    @Override
-//    public boolean login(String email, String password) {
-//        if (customerRepository.existsByEmailAndPassword(email, password)) {
-//            System.out.println("customer details: "+email+", password: "+password);
-//            return true;
-//        }
-//        return false;
-//    }
+
 
     @Override
     public LoginResDto loginDto(LoginReqDto req) throws CouponSystemException {
@@ -41,24 +33,6 @@ public class CustomerServiceImpl extends ClientService implements CustomerServic
         }
         throw new CouponSystemException(ErrMsg.EXCEPTION_WRONG_EMIEl_OR_PASSWORD);
     }
-
-//    @Override
-//    public void purchaseCoupon(int customerId, int couponId) throws CouponSystemException {
-//        Coupon coupon = couponRepository.findById(couponId).orElseThrow(()->new CouponSystemException(ErrMsg.ID_NOT_FOUND));
-//        if (coupon.getAmount()==0){
-//            throw new CouponSystemException(ErrMsg.COUPON_AMOUNT_ZERO);
-//        }
-//        if (customerRepository.existsByCustomerIdAndCouponId(customerId,couponId)==1){
-//            throw new CouponSystemException(ErrMsg.COUPON_ALREADY_PURCHASED);
-//        }
-//        if (coupon.getEndDate().before(Date.valueOf(LocalDate.now()))){
-//            throw new CouponSystemException(ErrMsg.COUPON_DATE_EXPIRED);
-//        }
-//        coupon.setAmount((coupon.getAmount()-1));
-//        couponRepository.saveAndFlush(coupon);
-//        couponRepository.purchaseCoupon(customerId, couponId);
-//
-//    }
 
     @Override
     public void purchaseCoupon(UUID token, int couponId) throws CouponSystemException {

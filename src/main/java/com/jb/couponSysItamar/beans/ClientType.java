@@ -1,4 +1,4 @@
-package com.jb.couponSysItamar.login;
+package com.jb.couponSysItamar.beans;
 
 public enum ClientType {
         ADMINISTRATOR,

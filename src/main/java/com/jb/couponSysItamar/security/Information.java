@@ -2,12 +2,11 @@ package com.jb.couponSysItamar.security;
 
 
 
-import com.jb.couponSysItamar.login.ClientType;
+import com.jb.couponSysItamar.beans.ClientType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.usertype.UserType;
 
 import java.time.LocalDateTime;
 

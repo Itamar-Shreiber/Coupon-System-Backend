@@ -3,11 +3,10 @@ package com.jb.couponSysItamar.controllers;
 import com.jb.couponSysItamar.beans.Company;
 import com.jb.couponSysItamar.beans.Coupon;
 import com.jb.couponSysItamar.beans.Customer;
-import com.jb.couponSysItamar.dto.CompanyPayload;
 import com.jb.couponSysItamar.dto.CompanyUpdatePayload;
 import com.jb.couponSysItamar.exceptions.CouponSystemException;
 import com.jb.couponSysItamar.exceptions.ErrMsg;
-import com.jb.couponSysItamar.login.ClientType;
+import com.jb.couponSysItamar.beans.ClientType;
 import com.jb.couponSysItamar.service.AdminService;
 import com.jb.couponSysItamar.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("api/admin")
+@CrossOrigin(origins = "*")
 public class AdminController {
     @Autowired
     private AdminService adminService;

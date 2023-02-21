@@ -1,7 +1,7 @@
 package com.jb.couponSysItamar.dto;
 
 
-import com.jb.couponSysItamar.login.ClientType;
+import com.jb.couponSysItamar.beans.ClientType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

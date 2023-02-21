@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jb.couponSysItamar.dto.CompanyPayload;
 import com.jb.couponSysItamar.dto.CompanyUpdatePayload;
 import lombok.*;
-import org.hibernate.usertype.UserType;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -34,11 +34,7 @@ public class Company {
     @JsonIgnore
     private List <Coupon> coupons;
 
-    public Company(CompanyPayload companyPayload) {
-        this.name = companyPayload.getName();
-        this.email = companyPayload.getEmail();
-        this.password = companyPayload.getPassword();
-    }
+  
 
     public Company(CompanyUpdatePayload companyUpdatePayload) {
         this.email = companyUpdatePayload.getEmail();

@@ -8,7 +8,6 @@ import com.jb.couponSysItamar.dto.CompanyUpdatePayload;
 import com.jb.couponSysItamar.dto.LoginReqDto;
 import com.jb.couponSysItamar.dto.LoginResDto;
 import com.jb.couponSysItamar.exceptions.CouponSystemException;
-import com.jb.couponSysItamar.login.ClientType;
 
 import java.util.List;
 
@@ -29,8 +28,6 @@ public interface AdminService {
 
     Company getSingleCompany(int companyId) throws CouponSystemException;
 
-
-
     void addCustomer(Customer customer) throws CouponSystemException;
 
     void updateCustomer(int customerId, Customer customer) throws CouponSystemException;
@@ -41,9 +38,6 @@ public interface AdminService {
 
     Customer getSingleCustomer(int customerId) throws CouponSystemException;
 
-//    boolean login(String email, String password);
     LoginResDto loginDto(LoginReqDto req) throws CouponSystemException;
-//    void deleteExpCoupon() throws CouponSystemException;
-
 
 }

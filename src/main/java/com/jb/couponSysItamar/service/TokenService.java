@@ -2,7 +2,7 @@ package com.jb.couponSysItamar.service;
 
 import com.jb.couponSysItamar.beans.User;
 import com.jb.couponSysItamar.exceptions.CouponSystemException;
-import com.jb.couponSysItamar.login.ClientType;
+import com.jb.couponSysItamar.beans.ClientType;
 
 
 

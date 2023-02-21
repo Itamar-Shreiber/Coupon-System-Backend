@@ -3,13 +3,11 @@ package com.jb.couponSysItamar.service;
 import com.jb.couponSysItamar.beans.Company;
 import com.jb.couponSysItamar.beans.Coupon;
 import com.jb.couponSysItamar.beans.Customer;
-import com.jb.couponSysItamar.dto.CompanyPayload;
 import com.jb.couponSysItamar.dto.CompanyUpdatePayload;
 import com.jb.couponSysItamar.dto.LoginReqDto;
 import com.jb.couponSysItamar.dto.LoginResDto;
 import com.jb.couponSysItamar.exceptions.CouponSystemException;
 import com.jb.couponSysItamar.exceptions.ErrMsg;
-import com.jb.couponSysItamar.login.ClientType;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -20,18 +18,10 @@ import java.util.UUID;
 @Primary
 public class AdminServiceImpl extends ClientService implements AdminService {
 
-//    @Override
-//    public boolean login(String email, String password) {
-//        if (email.equals("admin@admin.com") && password.equals("admin")) {
-//            System.out.println("admin details: email: " + email + ", password: " + password);
-//            return true;
-//        }
-//        return false;
-//    }
     @Override
     public LoginResDto loginDto(LoginReqDto req) throws CouponSystemException {
-        if(req.getEmail().equals("admin@admin.com") && req.getPassword().equals("admin")){
-            LoginResDto loginResDto=new LoginResDto(UUID.randomUUID(),req.getEmail(),req.getClientType());
+        if (req.getEmail().equals("admin@admin.com") && req.getPassword().equals("admin")) {
+            LoginResDto loginResDto = new LoginResDto(UUID.randomUUID(), req.getEmail(), req.getClientType());
             return loginResDto;
         }
         throw new CouponSystemException(ErrMsg.EXCEPTION_WRONG_EMIEl_OR_PASSWORD);
@@ -62,9 +52,9 @@ public class AdminServiceImpl extends ClientService implements AdminService {
     }
 
     public Company updateCompany(int companyId, CompanyUpdatePayload companyUpdatePayload) throws CouponSystemException {
-        Company company=new Company(companyUpdatePayload);
+        Company company = new Company(companyUpdatePayload);
         company.setId(companyId);
-        String name=companyRepository.findById(companyId).get().getName();
+        String name = companyRepository.findById(companyId).get().getName();
         company.setName(name);
         System.out.println(company);
 
@@ -114,8 +104,6 @@ public class AdminServiceImpl extends ClientService implements AdminService {
         return companyRepository.findById(companyId).orElseThrow(() -> new CouponSystemException(ErrMsg.ID_NOT_FOUND));
     }
 
-
-
     @Override
     public void addCustomer(Customer customer) throws CouponSystemException {
         if (customerRepository.existsById(customer.getId())) {
@@ -157,7 +145,4 @@ public class AdminServiceImpl extends ClientService implements AdminService {
         return customerRepository.findById(customerId).orElseThrow(() -> new CouponSystemException(ErrMsg.ID_NOT_FOUND));
     }
 
-//    public void deleteExpCoupon() throws CouponSystemException {
-//        couponRepository.deleteExpCoupon();
-//    }
 }

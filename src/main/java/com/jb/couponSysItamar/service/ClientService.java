@@ -15,5 +15,4 @@ public abstract class ClientService {
     @Autowired
     protected CouponRepository couponRepository;
 
-//    public abstract boolean login(String email, String password);
 }

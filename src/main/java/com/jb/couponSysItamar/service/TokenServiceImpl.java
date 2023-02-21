@@ -4,7 +4,7 @@ package com.jb.couponSysItamar.service;
 import com.jb.couponSysItamar.beans.User;
 import com.jb.couponSysItamar.exceptions.CouponSystemException;
 import com.jb.couponSysItamar.exceptions.ErrMsg;
-import com.jb.couponSysItamar.login.ClientType;
+import com.jb.couponSysItamar.beans.ClientType;
 import com.jb.couponSysItamar.security.Information;
 
 import lombok.RequiredArgsConstructor;

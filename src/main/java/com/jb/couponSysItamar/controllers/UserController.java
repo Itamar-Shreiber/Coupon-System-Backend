@@ -26,13 +26,7 @@ public class UserController {
     private final AdminService adminService;
     private final CustomerService customerService;
 
-//    @PostMapping("register")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public void register(@RequestBody UserReqDto req) throws SecuritySystemException {
-//        String email = req.getEmail();
-//        String password = req.getPassword();
-//        userService.addUser(email,password);
-//    }
+
 
     @PostMapping("login")
     @ResponseStatus(HttpStatus.CREATED)

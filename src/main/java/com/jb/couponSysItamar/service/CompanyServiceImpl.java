@@ -6,12 +6,10 @@ import com.jb.couponSysItamar.dto.LoginReqDto;
 import com.jb.couponSysItamar.dto.LoginResDto;
 import com.jb.couponSysItamar.exceptions.CouponSystemException;
 import com.jb.couponSysItamar.exceptions.ErrMsg;
-import com.jb.couponSysItamar.login.ClientType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,7 +36,7 @@ public class CompanyServiceImpl extends ClientService implements CompanyService 
     public void addCoupon(UUID token, CouponPayload couponPayload) throws CouponSystemException {
         Coupon coupon = new Coupon(couponPayload);
         coupon.setCompany(companyRepository.findById(tokenService.getUserID(token)).orElseThrow(() -> new CouponSystemException(ErrMsg.ID_NOT_FOUND)));
-        if (!couponRepository.existsById(coupon.getCompany().getId())) {
+        if (!companyRepository.existsById(coupon.getCompany().getId())) {
             throw new CouponSystemException(ErrMsg.ID_NOT_FOUND);
         }
         if (coupon.getCompany() != null) {
@@ -80,18 +78,10 @@ public class CompanyServiceImpl extends ClientService implements CompanyService 
             throw new CouponSystemException(ErrMsg.ID_NOT_FOUND);
         }
         couponRepository.deletePurchaseCoupon(couponId);
-
         couponRepository.deleteById(couponId);
 
     }
 
-//    @Override
-//    public List<Coupon> getAllCompanyCoupons(int companyId) throws CouponSystemException {
-//        if (!companyRepository.existsById(companyId)) {
-//            throw new CouponSystemException(ErrMsg.ID_NOT_FOUND);
-//        }
-//        return couponRepository.findByCompanyId(companyId);
-//    }
 
     @Override
     public Coupon getSingleCoupon(int couponId) throws CouponSystemException {
