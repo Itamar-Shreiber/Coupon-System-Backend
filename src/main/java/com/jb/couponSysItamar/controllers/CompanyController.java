@@ -24,17 +24,17 @@ public class CompanyController {
     @Autowired
     private TokenService tokenService;
 
-    @PostMapping("{token}/coupons")
+    @PostMapping("coupons")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addCoupon(@PathVariable UUID token, @RequestBody CouponPayload couponPayload, @RequestHeader("Authorization") UUID token2) throws CouponSystemException {
+    public void addCoupon( @RequestBody CouponPayload couponPayload, @RequestHeader("Authorization") UUID token) throws CouponSystemException {
         if (!tokenService.isValid(token, ClientType.COMPANY)) {
             throw new CouponSystemException(ErrMsg.INVALID_TOKEN);
         }
             companyService.addCoupon(token, couponPayload);
     }
 
-    @PutMapping("{token}/coupons/{couponId}")
-    public Coupon updateCoupon( @PathVariable UUID token,@PathVariable int couponId, @RequestBody CouponPayload couponPayload, @RequestHeader("Authorization") UUID token2) throws CouponSystemException {
+    @PutMapping("coupons/{couponId}")
+    public Coupon updateCoupon(@PathVariable int couponId, @RequestBody CouponPayload couponPayload, @RequestHeader("Authorization") UUID token) throws CouponSystemException {
         if (!tokenService.isValid(token, ClientType.COMPANY)) {
             throw new CouponSystemException(ErrMsg.INVALID_TOKEN);
         }
@@ -42,9 +42,9 @@ public class CompanyController {
     }
 
 
-    @DeleteMapping("{token}/coupons/{couponId}")
+    @DeleteMapping("coupons/{couponId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCoupon(@PathVariable UUID token ,@PathVariable int couponId, @RequestHeader("Authorization") UUID token2) throws CouponSystemException {
+    public void deleteCoupon(@PathVariable int couponId, @RequestHeader("Authorization") UUID token) throws CouponSystemException {
         if (!tokenService.isValid(token, ClientType.COMPANY)) {
             throw new CouponSystemException(ErrMsg.INVALID_TOKEN);
         }
@@ -52,8 +52,8 @@ public class CompanyController {
     }
 
 
-    @GetMapping("{token}/coupons")
-    public List<Coupon> getAllCompanyCoupons( @PathVariable UUID token, @RequestHeader("Authorization") UUID token2) throws CouponSystemException {
+    @GetMapping("coupons")
+    public List<Coupon> getAllCompanyCoupons( @RequestHeader("Authorization") UUID token) throws CouponSystemException {
         if (!tokenService.isValid(token, ClientType.COMPANY)) {
             throw new CouponSystemException(ErrMsg.INVALID_TOKEN);
         }

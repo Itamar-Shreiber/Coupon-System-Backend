@@ -38,7 +38,7 @@ public class AdminController {
         adminService.addCompany(company);
     }
 
-    @PutMapping("/companies/{companyId}")
+    @PutMapping("companies/{companyId}")
     public Company updateCompany(@PathVariable int companyId, @RequestBody CompanyUpdatePayload companyUpdatePayload, @RequestHeader("Authorization") UUID token) throws CouponSystemException {
         if (tokenService.isValid(token, ClientType.COMPANY)) {
             throw new CouponSystemException(ErrMsg.INVALID_TOKEN);

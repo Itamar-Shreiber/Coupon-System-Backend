@@ -24,9 +24,9 @@ public class CustomerController {
 
 
 
-    @PostMapping("{token}/coupons/{couponId}")
+    @PostMapping("coupons/{couponId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void purchaseCoupon(@PathVariable UUID token, @PathVariable int couponId, @RequestHeader("Authorization") UUID token2) throws CouponSystemException {
+    public void purchaseCoupon(@PathVariable int couponId, @RequestHeader("Authorization") UUID token) throws CouponSystemException {
         if (!tokenService.isValid(token, ClientType.CUSTOMER)) {
             throw new CouponSystemException(ErrMsg.INVALID_TOKEN);
         }
@@ -34,8 +34,8 @@ public class CustomerController {
     }
 
 
-    @GetMapping("{token}/coupons")
-    public List<Coupon> getAllCustomerPurchasedCoupons(@PathVariable UUID token, @RequestHeader("Authorization") UUID token2) throws CouponSystemException {
+    @GetMapping("coupons")
+    public List<Coupon> getAllCustomerPurchasedCoupons(@RequestHeader("Authorization") UUID token) throws CouponSystemException {
         if (!tokenService.isValid(token, ClientType.CUSTOMER)) {
             throw new CouponSystemException(ErrMsg.INVALID_TOKEN);
         }
